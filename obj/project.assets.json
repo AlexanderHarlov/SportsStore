@@ -5803,11 +5803,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Workspace\\C#\\ASP\\SportsSolution\\SportsStore\\SportsStore.csproj",
+      "projectUniqueName": "D:\\C#\\SportsStore\\SportsStore.csproj",
       "projectName": "SportsStore",
-      "projectPath": "C:\\Workspace\\C#\\ASP\\SportsSolution\\SportsStore\\SportsStore.csproj",
+      "projectPath": "D:\\C#\\SportsStore\\SportsStore.csproj",
       "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "C:\\Workspace\\C#\\ASP\\SportsSolution\\SportsStore\\obj\\",
+      "outputPath": "D:\\C#\\SportsStore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5822,6 +5822,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -5833,6 +5834,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -5869,7 +5871,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

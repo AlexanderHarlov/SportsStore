@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NJrM9FzT1t1C/Z8KEr8PtQDvraIvHRZvRNzajZdKhLqMzJIvFqMzL3sR/2APw06+rDYm++sx1gH1R/oyF0elEg==",
+  "dgSpecHash": "mNWWEIh0KS+Ul+t/ok/9XTXUNLKY9EMyzFUFoLCzscx75bO58agzHYliIa/x3Pjc6aoSENQ0P9MCkXMJr6PP6A==",
   "success": true,
-  "projectFilePath": "C:\\Workspace\\C#\\ASP\\SportsSolution\\SportsStore\\SportsStore.csproj",
+  "projectFilePath": "D:\\C#\\SportsStore\\SportsStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alex\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
