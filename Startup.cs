@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace SportsStore
 {
@@ -31,27 +33,53 @@ namespace SportsStore
             });
             //Each HTTP req gets its own repository object, dependency injection
             services.AddScoped<IStoreRepository, EFStoreRepository>();
+            services.AddScoped<IOrderRepository, EFOrderRepository>();
             //Use Razor Pages
             services.AddRazorPages();
             //Enable in-memory data store for the sessions
             services.AddDistributedMemoryCache();
             //Enable sessions - saving state for several requests
             services.AddSession();
+            //All Cart related requests should be handled by SessionCart -> requests for Cart service
+            //will be handled by creating SessionCart objects
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            //The same object will be used when IHttpContextAccessor is needed -> used to obtain the session
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //Add blazor server service
+            services.AddServerSideBlazor();
+            //Add identity db context
+            services.AddDbContext<AppIdentityDbContext>(options =>
+               options.UseSqlServer(
+                   Configuration["ConnectionStrings:IdentityConnection"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //Display exception details. Not to be used in prod
-            app.UseDeveloperExceptionPage(); 
+            if (env.IsProduction())
+            {
+                //Use simple HTML to notify the user an error has ocurred
+                app.UseExceptionHandler("/error");
+            }
+            else
+            {
+                //Display exception details. Not to be used in prod
+                app.UseDeveloperExceptionPage();
+                // Add message for HTTP res that dont have body (i.e. 404)
+                app.UseStatusCodePages();
+            }          
             // Enable serving static content from wwwroot
             app.UseStaticFiles();
             // Endpoint routing
-            app.UseRouting();
-            // Add message for HTTP res that dont have body (i.e. 404)
-            app.UseStatusCodePages();
+            app.UseRouting();           
             //Assosiate requests with sessions
             app.UseSession();
+            //Enable authentication and authorization
+            app.UseAuthentication();
+            app.UseAuthorization();
             // Endpoint routing
             app.UseEndpoints(endpoints =>
             {
@@ -76,9 +104,12 @@ namespace SportsStore
                 //MVC is source of endpoints
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
             });
             //Ensure database is populated
             SeedData.EnsurePopulated(app);
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

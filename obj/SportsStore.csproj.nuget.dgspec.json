@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C#\\SportsStore\\SportsStore.csproj": {}
+    "C:\\Workspace\\C#\\ASP\\SportsSolution\\SportsStore\\SportsStore.csproj": {}
   },
   "projects": {
-    "D:\\C#\\SportsStore\\SportsStore.csproj": {
+    "C:\\Workspace\\C#\\ASP\\SportsSolution\\SportsStore\\SportsStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C#\\SportsStore\\SportsStore.csproj",
+        "projectUniqueName": "C:\\Workspace\\C#\\ASP\\SportsSolution\\SportsStore\\SportsStore.csproj",
         "projectName": "SportsStore",
-        "projectPath": "D:\\C#\\SportsStore\\SportsStore.csproj",
+        "projectPath": "C:\\Workspace\\C#\\ASP\\SportsSolution\\SportsStore\\SportsStore.csproj",
         "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "D:\\C#\\SportsStore\\obj\\",
+        "outputPath": "C:\\Workspace\\C#\\ASP\\SportsSolution\\SportsStore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -26,7 +26,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -38,8 +37,15 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -75,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
